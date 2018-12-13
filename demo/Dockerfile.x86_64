@@ -1,0 +1,16 @@
+#
+# Create multiarch demo container based on python
+#
+
+#FROM tiangolo/uwsgi-nginx:python3.6-alpine3.7
+FROM multiarch-uwsgi-nginx-flask:x86_64
+
+COPY requirements.txt /
+
+WORKDIR /
+
+RUN pip install -r ./requirements.txt --no-cache-dir
+
+COPY app/ /app/
+
+WORKDIR /app
