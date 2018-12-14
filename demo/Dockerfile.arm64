@@ -2,7 +2,7 @@
 # Create multiarch python container
 #
 
-FROM multiarch/ubuntu-core:aarch64-bionic
+FROM multiarch/ubuntu-core:arm64-bionic
 
 # uwsgi-plugin-python3 python-setuptools
 
