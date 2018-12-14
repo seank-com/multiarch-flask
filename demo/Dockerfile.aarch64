@@ -1,6 +1,0 @@
-#
-# Create multiarch demo container based on python
-#
-
-#FROM tiangolo/uwsgi-nginx:python3.6-alpine3.7
-FROM multiarch-uwsgi-nginx-flask:aarch64
