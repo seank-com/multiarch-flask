@@ -1,0 +1,30 @@
+#
+# Create multiarch python container
+#
+
+FROM multiarch/ubuntu-core:arm64-bionic
+
+RUN apt-get update -y
+RUN apt-get install -y python3 python3-dev python3-pip
+#libpcre3 libpcre3-dev
+
+RUN pip3 install --upgrade pip
+
+#flask==0.12.2
+RUN pip3 install flask
+
+#numpy==1.14.1
+RUN pip3 install numpy
+
+RUN apt-get install -y zlib1g-dev libjpeg9-dev
+
+#pillow==5.0.0
+RUN pip3 install pillow
+
+RUN pip3 install six numpy wheel mock
+RUN pip3 install keras_applications==1.0.6 --no-deps
+RUN pip3 install keras_preprocessing==1.0.5 --no-deps
+
+COPY ./code /code
+
+WORKDIR /code

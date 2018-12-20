@@ -6,6 +6,7 @@ FROM multiarch/ubuntu-core:arm64-bionic
 
 RUN apt-get update -y
 RUN apt-get install -y python3 python3-dev python3-pip nginx supervisor libpcre3 libpcre3-dev
+
 #RUN rm -rf /var/lib/apt/lists/*
 
 # forward request and error logs to docker log collector
@@ -78,11 +79,19 @@ ENV PYTHONPATH=/app
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
 
-#tensorflow==1.5.0
-#pillow==5.0.0
-#numpy==1.14.1
 #flask==0.12.2
 RUN pip3 install flask
+
+#numpy==1.14.1
+RUN pip3 install numpy
+
+RUN apt-get install -y zlib1g-dev libjpeg9-dev
+
+#pillow==5.0.0
+RUN pip3 install pillow
+
+#tensorflow==1.5.0
+#RUN pip3 install tensorflow
 
 COPY ./app app/
 
