@@ -45,6 +45,20 @@ sudo nano /etc/systemd/system/multi-user.target.wants/iotedge.service
 sudo systemctl restart iotedge
 ```
 
+### Building containers
+
+You need to run the following command just once on dev machines that you would like to cross build on.
+
+```bash
+$ docker run --rm --privileged multiarch/qemu-user-static:register --reset
+```
+
+From here the ```build.sh`` script will do the rest
+
+```bash
+$ ./build.sh
+```
+
 ### Troubleshooting:
 
 * If you run edge as a daemon, you may end up getting 127 errors.  This just says something went wrong in the process started by the system.  If you want better error info, you can try running iotedged from the command line using: 
