@@ -21,6 +21,7 @@ RUN apt-get install -y zlib1g-dev libjpeg9-dev
 #pillow==5.0.0
 RUN pip3 install pillow
 
+# install pre-requisties for building TensorFlow
 RUN pip3 install six numpy wheel mock
 RUN pip3 install keras_applications==1.0.6 --no-deps
 RUN pip3 install keras_preprocessing==1.0.5 --no-deps
@@ -28,3 +29,10 @@ RUN pip3 install keras_preprocessing==1.0.5 --no-deps
 COPY ./code /code
 
 WORKDIR /code
+
+#apt-get update
+#apt-get install -y --no-install-recommends software-properties-common
+#add-apt-repository -y ppa:openjdk-r/ppa
+#apt-get update 
+#DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends openjdk-8-jdk
+ 
