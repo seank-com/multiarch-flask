@@ -59,6 +59,18 @@ From here the ```build.sh`` script will do the rest
 $ ./build.sh
 ```
 
+### Notes for Building TensorFlow
+
+Lukasz Janyst has steps from [cross-compiling TensorFlow for Jetson](https://jany.st/post/2018-02-05-cross-compiling-tensorflow-for-jetson-tx1-with-bazel.html) that we found in this Github [issue](https://github.com/tensorflow/tensorflow/issues/16779), we want to build natively, but perhaps we can use some of his learnings.
+
+Zhiyi has some nice steps for [compiling Tensorflow natively for Arm64](http://zhiyisun.github.io/2017/02/15/Running-Google-Machine-Learning-Library-Tensorflow-On-ARM-64-bit-Platform.html) that we will probably need to make use of.
+
+Steps for [building TensorFlow from source](https://www.tensorflow.org/install/source)
+
+Steps for [building Bazel from source](https://docs.bazel.build/versions/master/install-compile-source.html)
+
+
+
 ### Troubleshooting:
 
 * If you run edge as a daemon, you may end up getting 127 errors.  This just says something went wrong in the process started by the system.  If you want better error info, you can try running iotedged from the command line using: 
