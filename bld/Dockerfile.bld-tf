@@ -2,7 +2,8 @@
 # Create multiarch python container
 #
 
-FROM multiarch/ubuntu-core:arm64-bionic AS base
+#FROM multiarch/ubuntu-core:arm64-bionic AS base
+FROM multiarch/ubuntu-core:arm64-bionic
 
 RUN apt-get update -y
 RUN apt-get install -y python3 python3-dev python3-pip
@@ -20,11 +21,12 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
 
 WORKDIR /root
 
-FROM seankelly/multiarch-bazel:arm64-latest as bazel
+#FROM seankelly/multiarch-bazel:arm64-latest as bazel
 
-FROM dependencies AS tf
+#FROM dependencies AS tf
 
-COPY --from=bazel /root/bazel-0.21.0/output/bazel /usr/local/bin/bazel
+#COPY --from=bazel /root/bazel-0.21.0/output/bazel /usr/local/bin/bazel
+COPY bazel /usr/local/bin/bazel
 
 RUN wget https://github.com/tensorflow/tensorflow/archive/v1.12.0.zip
 
