@@ -7,7 +7,7 @@
 # Build TensorFlow (emulated)
 
 #docker run --rm --privileged multiarch/qemu-user-static:register --reset
-#docker build -t multiarch-bld -f bld/Dockerfile.bld-tf bld/
+docker build -t multiarch-bld -f bld/Dockerfile.bld-tf bld/
 
 # Build Flask (native and emulated)
 

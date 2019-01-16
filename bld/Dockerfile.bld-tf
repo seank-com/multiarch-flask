@@ -2,20 +2,36 @@
 # Create multiarch python container
 #
 
-FROM multiarch/ubuntu-core:arm64-bionic as base
+FROM multiarch/ubuntu-core:arm64-bionic AS base
 
 RUN apt-get update -y
 RUN apt-get install -y python3 python3-dev python3-pip
 
 RUN pip3 install --upgrade pip
 
-FROM seankelly/multiarch-bld:arm64-latest as bazel
-
-FROM base as tf
-
-COPY --from=bazel /root/bazel-0.21.0/output/bazel /usr/local/bin/bazel
+FROM base AS dependencies
 
 RUN pip3 install six numpy wheel mock
 RUN pip3 install keras_applications==1.0.6 --no-deps
 RUN pip3 install keras_preprocessing==1.0.5 --no-deps
+
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+  build-essential openjdk-8-jdk unzip wget
+
+WORKDIR /root
+
+FROM seankelly/multiarch-bazel:arm64-latest as bazel
+
+FROM dependencies AS tf
+
+COPY --from=bazel /root/bazel-0.21.0/output/bazel /usr/local/bin/bazel
+
+RUN wget https://github.com/tensorflow/tensorflow/archive/v1.12.0.zip
+
+RUN mkdir tf-1.12.0
+
+RUN unzip v1.12.0.zip -d ./
+
+WORKDIR /root/tensorflow-1.12.0
+
 
