@@ -1,8 +1,9 @@
 # Build Bazel (native) - [does not build emulated](https://github.com/bazelbuild/bazel/issues/7135)
 
+rm ./bld/bazel
 docker build -t multiarch-bazel -f bld/Dockerfile.bld-bazel bld/
 docker tag multiarch-bazel seankelly/multiarch-bazel:arm64-latest
-#docker push seankelly/multiarch-bazel:arm64-latest
+docker push seankelly/multiarch-bazel:arm64-latest
 
 # Build TensorFlow (emulated)
 
@@ -12,6 +13,7 @@ docker container cp extract:/root/bazel-0.19.1/output/bazel ./bazel
 docker container rm -f extract
 
 docker build -t multiarch-bld -f bld/Dockerfile.bld-tf bld/
+rm ./bld/bazel
 
 # Build Flask (native and emulated)
 
