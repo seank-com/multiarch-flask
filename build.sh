@@ -1,7 +1,16 @@
-#docker build -t multiarch-demo:x86_64 -f demo/Dockerfile.x86_64 demo
-#docker build -t multiarch-demo:arm64 -f demo/Dockerfile.arm64 demo/
+# Build Bazel (native) - [does not build emulated](https://github.com/bazelbuild/bazel/issues/7135)
+
+#docker build -t multiarch-bazel -f bld/Dockerfile.bld-bazel bld/
+#docker tag multiarch-bazel seankelly/multiarch-bazel:arm64-latest
+#docker push seankelly/multiarch-bazel:arm64-latest
+
+# Build TensorFlow (emulated)
 
 #docker run --rm --privileged multiarch/qemu-user-static:register --reset
-docker build -t multiarch-bld -f bld/Dockerfile.multi bld/
+#docker build -t multiarch-bld -f bld/Dockerfile.bld-tf bld/
 
-# docker run -d --rm -p 80:80 multiarch-demo:x86_64 /bin/sh
+# Build Flask (native and emulated)
+
+#docker build -t multiarch-demo:x86_64 -f demo/Dockerfile.x86_64 demo/
+#docker build -t multiarch-demo:arm64 -f demo/Dockerfile.arm64 demo/
+

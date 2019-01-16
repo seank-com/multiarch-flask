@@ -47,16 +47,16 @@ sudo systemctl restart iotedge
 
 ### Building containers
 
-You need to run the following command just once on dev machines that you would like to cross build on.
-
-```bash
-$ docker run --rm --privileged multiarch/qemu-user-static:register --reset
-```
-
-From here the ```build.sh`` script will do the rest
+Just run the following:
 
 ```bash
 $ ./build.sh
+```
+
+### Running the container
+
+```bash
+$ docker run -d --rm -p 80:80 multiarch-demo:x86_64
 ```
 
 ### Notes for Building TensorFlow
