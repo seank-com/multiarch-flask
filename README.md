@@ -65,10 +65,13 @@ Lukasz Janyst has steps from [cross-compiling TensorFlow for Jetson](https://jan
 
 Zhiyi has some nice steps for [compiling Tensorflow natively for Arm64](http://zhiyisun.github.io/2017/02/15/Running-Google-Machine-Learning-Library-Tensorflow-On-ARM-64-bit-Platform.html) that we will probably need to make use of.
 
-Steps for [building TensorFlow from source](https://www.tensorflow.org/install/source)
+Brainiarc7 [likewise](https://gist.github.com/Brainiarc7/6d6c3f23ea057775b72c52817759b25c)
 
+Steps for [building TensorFlow from source](https://www.tensorflow.org/install/source)
+Notes for [GPU support](https://www.tensorflow.org/install/gpu)
 Steps for [building Bazel from source](https://docs.bazel.build/versions/master/install-compile-source.html)
 
+We found a [whl](https://devtalk.nvidia.com/default/topic/1031300/jetson-tx2/tensorflow-1-7-wheel-with-jetpack-3-2-/post/5246603/#5246603) from nVidia!
 
 ```bash
 $ ./configure
