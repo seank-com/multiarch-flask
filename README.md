@@ -70,6 +70,10 @@ Steps for [building TensorFlow from source](https://www.tensorflow.org/install/s
 Steps for [building Bazel from source](https://docs.bazel.build/versions/master/install-compile-source.html)
 
 
+```bash
+$ ./configure
+$ bazel build --config=opt --define=grpc_no_ares=true //tensorflow/tools/pip_package:build_pip_package
+```
 
 ### Troubleshooting:
 
