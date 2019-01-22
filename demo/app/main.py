@@ -13,8 +13,8 @@ def hello():
         "in a uWSGI Nginx Docker container " + \
         "with Python 3.5\n\n"
 
-  out = out + str(a) + " * " + str(b) + " = "
-  
+  out = out + "[[1.0,2.0,3.0][4.0,5.0,6.0]] * [[1.0,2.0][3.0,4.0][5.0,6.0]] = "
+
   with tf.Session() as sess:
     out = out + str(sess.run(c))
 
