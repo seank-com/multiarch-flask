@@ -14,7 +14,7 @@ def hello():
         "with Python 3.5\n"
 
   with tf.Session() as sess:
-    out = out + sess.run(c)
+    out = out + str(sess.run(c))
 
   return out 
 
