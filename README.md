@@ -18,7 +18,7 @@ $ docker build -t multiarch-demo:arm64 -f demo/Dockerfile.arm64 demo/
 To build arm (emulated)
 
 ```bash
-$ docker run --rm --privileged multiarch/qemu-user-static:register
+$ docker run --rm --privileged multiarch/qemu-user-static:register --reset
 $ docker build -t multiarch-demo:arm64 -f demo/Dockerfile.arm64 demo/
 ```
 
