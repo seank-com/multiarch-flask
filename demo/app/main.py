@@ -11,8 +11,10 @@ with tf.device('/gpu:0'):
 def hello():
   out = "Hello World from Flask with TensorFlow " + \
         "in a uWSGI Nginx Docker container " + \
-        "with Python 3.5\n"
+        "with Python 3.5\n\n"
 
+  out = out + str(a) + " * " + str(b) + " = "
+  
   with tf.Session() as sess:
     out = out + str(sess.run(c))
 
